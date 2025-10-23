@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Modifier matériel — BTP_appGRP3</title>
+<style>
+  :root{--blue:#0a66c2;--bg:#f7fbff}
+  body{font-family:Inter, Arial;background:var(--bg);margin:0;color:#042033}
+  header{background:var(--blue);color:white;padding:12px 14px;display:flex;align-items:center}
+  main{max-width:720px;margin:18px auto;padding:12px}
+  form{background:white;padding:14px;border-radius:10px;box-shadow:0 3px 10px rgba(2,8,20,0.06)}
+  label{display:block;margin-top:8px;font-weight:600}
+  input,textarea{width:100%;padding:8px;margin-top:6px;border-radius:8px;border:1px solid #e6f2ff}
+  .actions{margin-top:12px;display:flex;gap:8px}
+  .btn{padding:9px 12px;border-radius:8px;border:none;font-weight:700;cursor:pointer}
+  .btn.save{background:#0a66c2;color:white}
+  .btn.cancel{background:#eef7ff;color:#022}
+</style>
+</head>
+<body>
+<header>
+  <div style="font-weight:700">Modifier matériel</div>
+  <a style="margin-left:auto;color:white;text-decoration:none" href="stock_list.html">Retour</a>
+</header>
+
+<main>
+  <form id="formEdit" onsubmit="return false">
+    <label>ID<input id="mid" readonly /></label>
+    <label>Nom<input id="name" required /></label>
+    <div style="display:flex;gap:10px">
+      <label style="flex:1">Quantité<input id="qty" type="number" min="0" /></label>
+      <label style="flex:1">Unité<input id="unit" /></label>
+    </div>
+    <label>Localisation<input id="location" /></label>
+    <label>Prix unitaire<input id="price" type="number" min="0" /></label>
+    <label>Description<textarea id="desc" rows="3"></textarea></label>
+
+    <div class="actions">
+      <button class="btn save" id="save">Enregistrer</button>
+      <a class="btn cancel" href="stock_list.html">Annuler</a>
+    </div>
+    <div id="msg" style="margin-top:10px;color:green"></div>
+  </form>
+</main>
+
+<script src="data.js"></script>
+<script>
+  // Lire id depuis query param
+  function qp(name){ return new URLSearchParams(location.search).get(name); }
+  const id = qp('id');
+  if(!id){ alert('ID manquant'); location.href='stock_list.html'; }
+
+  const data = BTP_getData();
+  const mat = data.materials.find(m => m.id === id);
+  if(!mat){ alert('Matériel introuvable'); location.href='stock_list.html'; }
+
+  // Prefill
+  document.getElementById('mid').value = mat.id;
+  document.getElementById('name').value = mat.name;
+  document.getElementById('qty').value = mat.qty;
+  document.getElementById('unit').value = mat.unit;
+  document.getElementById('location').value = mat.location;
+  document.getElementById('price').value = mat.price;
+  document.getElementById('desc').value = mat.description;
+
+  document.getElementById('save').addEventListener('click', function(){
+    const name = document.getElementById('name').value.trim();
+    const qty = Number(document.getElementById('qty').value);
+    const unit = document.getElementById('unit').value.trim();
+    const locationInput = document.getElementById('location').value.trim();
+    const price = Number(document.getElementById('price').value) || 0;
+    const description = document.getElementById('desc').value.trim();
+
+    if(!name){ alert('Nom requis'); return; }
+
+    // Update
+    mat.name = name;
+    mat.qty = qty;
+    mat.unit = unit;
+    mat.location = locationInput;
+    mat.price = price;
+    mat.description = description;
+
+    BTP_saveData(data);
+    document.getElementById('msg').textContent = 'Modifications enregistrées. Retour...';
+    setTimeout(()=> location.href='stock_list.html', 900);
+  });
+</script>
+</body>
+</html>

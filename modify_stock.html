@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Modifier quantité — BTP_appGRP3</title>
+<style>
+  body{font-family:Inter, Arial;margin:0;background:#f7fbff;color:#042033}
+  header{background:#0a66c2;color:white;padding:12px 14px;display:flex;align-items:center}
+  main{max-width:620px;margin:18px auto;padding:12px}
+  .card{background:white;padding:14px;border-radius:10px;box-shadow:0 3px 10px rgba(2,8,20,0.06)}
+  label{display:block;margin-top:10px}
+  input{padding:8px;width:100%;border-radius:8px;border:1px solid #e6f2ff}
+  .ops{display:flex;gap:8px;margin-top:12px}
+  .ops button{flex:1;padding:10px;border-radius:8px;border:none;font-weight:700;cursor:pointer}
+  .inc{background:#12b76a;color:white}
+  .dec{background:#ef4444;color:white}
+</style>
+</head>
+<body>
+<header>
+  <div style="font-weight:700">Modifier quantité</div>
+  <a style="margin-left:auto;color:white;text-decoration:none" href="stock_list.html">Retour</a>
+</header>
+
+<main>
+  <div class="card">
+    <div id="info"></div>
+    <label>Montant à ajouter/enlever (entier)
+      <input id="delta" type="number" value="1" />
+    </label>
+
+    <div class="ops">
+      <button class="inc" id="addBtn">+ Ajouter</button>
+      <button class="dec" id="subBtn">- Retirer</button>
+    </div>
+    <div style="margin-top:10px;color:green" id="msg"></div>
+  </div>
+</main>
+
+<script src="data.js"></script>
+<script>
+  function qp(n){return new URLSearchParams(location.search).get(n)}
+  const id = qp('id'); if(!id){ alert('ID manquant'); location.href='stock_list.html'; }
+
+  const data = BTP_getData();
+  const mat = data.materials.find(m=>m.id===id);
+  if(!mat){ alert('Matériel introuvable'); location.href='stock_list.html'; }
+
+  const info = document.getElementById('info');
+  const deltaInput = document.getElementById('delta');
+  const msg = document.getElementById('msg');
+  function refreshInfo(){ info.innerHTML = `<h2 style="margin:0">${mat.name} <small style="color:#6b7280">(${mat.id})</small></h2><div style="margin-top:6px">Quantité actuelle: <strong>${mat.qty} ${mat.unit}</strong></div>`;}
+  refreshInfo();
+
+  document.getElementById('addBtn').addEventListener('click', ()=>{
+    const d = Math.round(Number(deltaInput.value) || 0);
+    if(d<=0){ alert('Montant > 0'); return; }
+    mat.qty = Number(mat.qty) + d;
+    BTP_saveData(data);
+    refreshInfo();
+    msg.textContent = `+${d} ajouté. Stock = ${mat.qty} ${mat.unit}`;
+  });
+
+  document.getElementById('subBtn').addEventListener('click', ()=>{
+    const d = Math.round(Number(deltaInput.value) || 0);
+    if(d<=0){ alert('Montant > 0'); return; }
+    if(mat.qty - d < 0){ if(!confirm('Quantité deviendrait négative, continuer?')) return; }
+    mat.qty = Number(mat.qty) - d;
+    BTP_saveData(data);
+    refreshInfo();
+    msg.textContent = `-${d} retiré. Stock = ${mat.qty} ${mat.unit}`;
+  });
+</script>
+</body>
+</html>

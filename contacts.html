@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contacts — BTP_appGRP3</title>
+<style>
+  body{font-family:Inter, Arial;margin:0;background:#f7fbff;color:#042033}
+  header{background:#0a66c2;color:white;padding:12px 14px;display:flex;align-items:center}
+  main{max-width:900px;margin:18px auto;padding:12px}
+  .grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
+  .card{background:white;padding:14px;border-radius:10px;box-shadow:0 3px 10px rgba(2,8,20,0.06)}
+  .contact{padding:8px 0;border-bottom:1px solid #eef7ff}
+  label{display:block;margin-top:8px}
+  input,textarea{width:100%;padding:8px;border-radius:8px;border:1px solid #e6f2ff}
+  button{margin-top:10px;padding:10px;border-radius:8px;border:none;background:#0a66c2;color:white;font-weight:700}
+</style>
+</head>
+<body>
+<header>
+  <div style="font-weight:700">Contacts</div>
+  <a style="margin-left:auto;color:white;text-decoration:none" href="index.html">Accueil</a>
+</header>
+
+<main>
+  <div class="grid">
+    <div class="card">
+      <h3>Liste des contacts</h3>
+      <div id="contactsList"></div>
+    </div>
+
+    <div class="card">
+      <h3>Envoyer un message (local)</h3>
+      <form id="contactForm" onsubmit="return false">
+        <label>Nom<input id="c_name" required /></label>
+        <label>Email<input id="c_email" type="email" required /></label>
+        <label>Message<textarea id="c_msg" rows="5" required></textarea></label>
+        <button id="sendBtn">Envoyer</button>
+        <div id="c_ack" style="margin-top:8px;color:green"></div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<script src="data.js"></script>
+<script>
+  const data = BTP_getData();
+  const list = document.getElementById('contactsList');
+  list.innerHTML = data.contacts.map(c => `
+    <div class="contact">
+      <strong>${c.name}</strong> <div style="color:#6b7280">${c.role}</div>
+      <div style="margin-top:6px">📞 ${c.phone} • ✉️ ${c.email}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('sendBtn').addEventListener('click', ()=>{
+    const name = document.getElementById('c_name').value.trim();
+    const email = document.getElementById('c_email').value.trim();
+    const message = document.getElementById('c_msg').value.trim();
+    if(!name||!email||!message) { alert('Remplis tous les champs'); return; }
+    // Local acknowledgement only (pas d'envoi serveur)
+    document.getElementById('c_ack').textContent = 'Message enregistré localement (simulé). Merci ' + name + '.';
+    document.getElementById('contactForm').reset();
+  });
+</script>
+</body>
+</html>
