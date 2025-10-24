@@ -1,83 +1,178 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Ajouter matériel — BTP_appGRP3</title>
-<style>
-  :root{--blue:#0a66c2;--sky:#7fc7ff;--bg:#f7fbff}
-  body{font-family:Inter, Arial;background:var(--bg);margin:0;color:#042033}
-  header{background:linear-gradient(90deg,var(--blue),var(--sky));color:white;padding:12px 16px;display:flex;align-items:center}
-  main{max-width:700px;margin:18px auto;padding:12px}
-  form{background:white;padding:14px;border-radius:12px;box-shadow:0 4px 14px rgba(2,10,20,0.06)}
-  label{display:block;margin-top:10px;font-weight:600}
-  input,textarea,select{width:100%;padding:8px;margin-top:6px;border-radius:8px;border:1px solid #dfeefb}
-  .row{display:flex;gap:8px}
-  .row > *{flex:1}
-  .actions{margin-top:14px;display:flex;gap:8px}
-  .btn{padding:10px 14px;border-radius:8px;border:none;font-weight:700;cursor:pointer}
-  .btn.primary{background:var(--blue);color:white}
-  .btn.ghost{background:#eef7ff;color:#082036}
-</style>
-</head>
-<body>
-<header>
-  <div style="font-weight:700">Ajouter matériel</div>
-  <a style="margin-left:auto;color:white;text-decoration:none" href="stock_list.html">Voir stocks</a>
-</header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ajouter matériel — BTP_appGRP3</title>
+    <style>
+      :root {
+        --blue: #0a66c2;
+        --sky: #7fc7ff;
+        --bg: #f7fbff;
+      }
+      body {
+        font-family: Inter, Arial;
+        background: var(--bg);
+        margin: 0;
+        color: #042033;
+      }
+      header {
+        background: linear-gradient(90deg, var(--blue), var(--sky));
+        color: white;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+      }
+      main {
+        max-width: 700px;
+        margin: 18px auto;
+        padding: 12px;
+      }
+      form {
+        background: white;
+        padding: 14px;
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(2, 10, 20, 0.06);
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: 600;
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 6px;
+        border-radius: 8px;
+        border: 1px solid #dfeefb;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+      }
+      .row > * {
+        flex: 1;
+      }
+      .actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 8px;
+      }
+      .btn {
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .btn.primary {
+        background: var(--blue);
+        color: white;
+      }
+      .btn.ghost {
+        background: #eef7ff;
+        color: #082036;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div style="font-weight: 700">Ajouter matériel</div>
+      <a
+        style="margin-left: auto; color: white; text-decoration: none"
+        href="stock_list.html"
+        >Voir stocks</a
+      >
+    </header>
 
-<main>
-  <form id="formAdd" onsubmit="return false" aria-label="Formulaire d'ajout">
-    <label>Nom du matériel<input id="name" required /></label>
-    <div class="row">
-      <label>Quantité<input id="qty" type="number" min="0" value="1" required /></label>
-      <label>Unité<input id="unit" value="pcs" required /></label>
-    </div>
-    <label>Localisation<input id="location" value="Entrepôt A" /></label>
-    <div class="row">
-      <label>Prix unitaire (FCFA)<input id="price" type="number" min="0" value="0" /></label>
-      <label>ID souhaité (optionnel)<input id="id" placeholder="laisser vide => génération automatique" /></label>
-    </div>
-    <label>Description<textarea id="desc" rows="3"></textarea></label>
+    <main>
+      <form
+        id="formAdd"
+        onsubmit="return false"
+        aria-label="Formulaire d'ajout"
+      >
+        <label>Nom du matériel<input id="name" required /></label>
+        <div class="row">
+          <label
+            >Quantité<input id="qty" type="number" min="0" value="1" required
+          /></label>
+          <label>Unité<input id="unit" value="pcs" required /></label>
+        </div>
+        <label
+          >Location<input id="location" value="Entrepôt A" required
+        /></label>
+        <div class="row">
+          <label
+            >Prix unitaire (FCFA)<input
+              id="price"
+              type="number"
+              min="0"
+              value="0"
+          /></label>
+          <label
+            >ID souhaité (optionnel)<input
+              id="id"
+              placeholder="laisser vide => génération automatique"
+          /></label>
+        </div>
+        <label>Description<textarea id="desc" rows="3"></textarea></label>
 
-    <div class="actions">
-      <button class="btn primary" id="saveBtn">Enregistrer</button>
-      <a class="btn ghost" href="stock_list.html">Annuler</a>
-    </div>
-    <div id="msg" style="margin-top:10px;color:green"></div>
-  </form>
-</main>
+        <div class="actions">
+          <button class="btn primary" id="saveBtn">Enregistrer</button>
+          <a class="btn ghost" href="stock_list.html">Annuler</a>
+        </div>
+        <div id="msg" style="margin-top: 10px; color: green"></div>
+      </form>
+    </main>
 
-<script src="data.js"></script>
-<script>
-  // Add logic
-  const form = document.getElementById('formAdd');
-  const msg = document.getElementById('msg');
+    <script src="data.js"></script>
+    <script>
+      // Add logic
+      const form = document.getElementById("formAdd");
+      const msg = document.getElementById("msg");
 
-  document.getElementById('saveBtn').addEventListener('click', function(){
-    const name = document.getElementById('name').value.trim();
-    const qty = Number(document.getElementById('qty').value);
-    const unit = document.getElementById('unit').value.trim() || 'pcs';
-    const location = document.getElementById('location').value.trim();
-    const price = Number(document.getElementById('price').value) || 0;
-    const description = document.getElementById('desc').value.trim();
-    let id = document.getElementById('id').value.trim();
+      document.getElementById("saveBtn").addEventListener("click", function () {
+        const name = document.getElementById("name").value.trim();
+        const qty = Number(document.getElementById("qty").value);
+        const unit = document.getElementById("unit").value.trim() || "pcs";
+        const location = document.getElementById("location").value.trim();
+        const price = Number(document.getElementById("price").value) || 0;
+        const description = document.getElementById("desc").value.trim();
+        let id = document.getElementById("id").value.trim();
 
-    if(!name){ alert('Donne un nom au matériel'); return; }
+        if (!name) {
+          alert("Donne un nom au matériel");
+          return;
+        }
 
-    const data = BTP_getData();
+        // New: Check location (slight validation)
+        if (!location) {
+          alert("Ajoute une localisation");
+          return;
+        }
 
-    if(!id) {
-      id = BTP_newMaterialId(data);
-    } else {
-      if(data.materials.find(m=>m.id===id)){ alert('ID déjà existant, choisis un autre ou laisse vide'); return; }
-    }
+        const data = BTP_getData();
 
-    const newMat = { id, name, qty, unit, location, price, description };
-    data.materials.push(newMat);
-    BTP_saveData(data);
-    msg.textContent = `Matériel ${id} ajouté. Retour à la liste...`;
-    setTimeout(()=> location.href = 'stock_list.html', 900);
-  });
-</script>
-</body>
+        if (!id) {
+          id = BTP_newMaterialId(data);
+        } else {
+          if (data.materials.find((m) => m.id === id)) {
+            alert("ID déjà existant, choisis un autre ou laisse vide");
+            return;
+          }
+        }
+
+        const newMat = { id, name, qty, unit, location, price, description };
+        data.materials.push(newMat);
+        BTP_saveData(data);
+        msg.textContent = `Matériel "${name}" (${id}) ajouté avec succès. Retour à la liste...`;
+        msg.style.color = "green";
+        setTimeout(() => (location.href = "stock_list.html"), 900);
+      });
+    </script>
+  </body>
 </html>
+```
