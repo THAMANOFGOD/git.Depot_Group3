@@ -7,7 +7,7 @@
 <style>
   /* Style simple, couleurs: bleu, bleu-ciel, blanc */
   :root{
-    --blue:#0a66c2;
+    --blue:purple;
     --sky:#7fc7ff;
     --bg:#f7fbff;
     --card:#ffffff;
@@ -27,10 +27,10 @@
   .big{font-size:28px;font-weight:800}
   .muted{color:var(--muted);font-size:14px}
   .links a{display:inline-block;margin:8px 8px 0 0;padding:8px 12px;background:var(--sky);color:#072034;border-radius:8px;text-decoration:none;font-weight:600}
-  footer{max-width:1100px;margin:20px auto;color:var(--muted);font-size:13px;text-align:center}
+  footer{background:linear-gradient(90deg,var(--blue),var(--sky)); color:white; padding:18px 20px; display:flex; align-items:center; gap:14px}
   @media (max-width:520px){header{padding:14px} .logo span{font-size:14px}}
 </style>
-<!-- tout en haut de index.html, juste après <body> -->
+<!--PREMIER COMMIT-->
 <h1 style="color: purple; text-align:center;">Bienvenue sur la version de Myriam!</h1>
 
 </head>
@@ -42,7 +42,7 @@
     <span>BTP_appGRP3</span>
   </div>
   <nav>
-    <a href="stock_list.html">Stocks</a>
+    <a href="stock_list.html; ">Stocks</a>
     <a href="add_material.html">Ajouter</a>
     <a href="services.html">Services</a>
     <a href="contacts.html">Contacts</a>
@@ -69,7 +69,7 @@
 </main>
 
 <footer>
-  BTP_appGRP3 — gestion de stock simple • Application responsive • Données conservées dans votre navigateur
+   <h3 style=" text-align:center;">BTP_appGRP3 — gestion de stock simple • Application responsive • Données conservées dans votre navigateur </h3>
 </footer>
 
 <script src="data.js"></script>
