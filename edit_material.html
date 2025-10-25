@@ -72,6 +72,8 @@
     const description = document.getElementById('desc').value.trim();
 
     if(!name){ alert('Nom requis'); return; }
+    if(qty < 0){ alert("Quantité invalide"); return; }
+    if(qty < 0){ alert("Quantité invalide"); return; }
 
     // Update
     mat.name = name;
