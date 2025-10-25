@@ -62,5 +62,6 @@
     const d = load();
     return d.materials.find(m => m.id === id) || null;
   };
+  console.log("Test");
 
 })();
