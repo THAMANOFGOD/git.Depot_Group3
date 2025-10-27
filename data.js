@@ -4,6 +4,8 @@
 // Ne modifie que si tu sais ce que tu fais.
 // Ce fichier fournit : BTP_getData(), BTP_saveData(data), BTP_newId()
 
+
+
 (function(){
   // Données initiales (exemples)
   const initial = {
@@ -68,5 +70,6 @@
     const d = load();
     return d.materials.find(m => m.id === id) || null;
   };
+  console.log("Test");
 
 })();
