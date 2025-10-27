@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Version 1.1 - Yves ANAGUE - Améliorations globales -->
 <html lang="fr">
 <head>
 
@@ -47,7 +48,7 @@
   if(matIndex<0){ alert('Matériel introuvable'); location.href='stock_list.html'; }
   const mat = data.materials[matIndex];
   document.getElementById('content').innerHTML = `
-    <div class="danger"><strong>Suppression définitive</strong><div style="margin-top:6px">Voulez-vous vraiment supprimer <strong>${mat.name} (${mat.id})</strong> ? Cette action est irréversible.</div></div>
+    <div class="danger"><strong>⚠️ Suppression définitive</strong><div style="margin-top:6px">Voulez-vous vraiment supprimer <strong>${mat.name} (${mat.id})</strong> ? Cette action est irréversible.</div></div>
   `;
 
   document.getElementById('confirm').addEventListener('click', ()=>{

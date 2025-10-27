@@ -1,4 +1,5 @@
-// data.js
+// data.js - Version 1.1
+// Améliorations: validation et nouvelles fonctions utilitaires
 // Données initiales et fonctions utilitaires pour BTP_appGRP3
 // Ne modifie que si tu sais ce que tu fais.
 // Ce fichier fournit : BTP_getData(), BTP_saveData(data), BTP_newId()
@@ -55,6 +56,11 @@
   }
 
   // Expose to window
+  function validateMaterial(mat) {
+    return mat.name && mat.qty >= 0 && mat.unit;
+  }
+  window.BTP_validateMaterial = validateMaterial;
+
   window.BTP_getData = load;
   window.BTP_saveData = save;
   window.BTP_newMaterialId = newMaterialId;
