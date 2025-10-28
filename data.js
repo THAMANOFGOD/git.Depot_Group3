@@ -22,7 +22,7 @@
     ]
   };
 
-  // Key localStorage
+   // Key localStorage
   const LS_KEY = 'BTP_appGRP3_data_v1';
 
   // Restore from localStorage or initial
