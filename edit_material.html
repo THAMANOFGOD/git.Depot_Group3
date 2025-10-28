@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Version 1.1 - Yves ANAGUE - Améliorations globales -->
 <html lang="fr">
 <head>
 
@@ -74,6 +75,8 @@
     const description = document.getElementById('desc').value.trim();
 
     if(!name){ alert('Nom requis'); return; }
+    if(qty < 0){ alert("Quantité invalide"); return; }
+    if(qty < 0){ alert("Quantité invalide"); return; }
 
     // Update
     mat.name = name;
