@@ -1,8 +1,146 @@
-<!doctype html>
+<!DOCTYPE html>
 <!-- Version 1.1 - Yves ANAGUE - Améliorations globales -->
 <html lang="fr">
-<head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BTP_appGRP3 — Dashboard</title>
+    <style>
+      /* Style simple, couleurs: bleu, bleu-ciel, blanc */
+      :root {
+        --blue: #1e3a8a;
+        --sky: #7fc7ff;
+        --bg: #f7fbff;
+        --card: #ffffff;
+        --muted: #6b7280;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Inter, system-ui, Arial;
+        margin: 0;
+        background: var(--bg);
+        color: #0b1723;
+      }
+      header {
+        background: linear-gradient(90deg, var(--blue), var(--sky));
+        color: white;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+      }
+      .logo svg {
+        width: 48px;
+        height: 48px;
+      }
+      nav {
+        margin-left: auto;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 14px;
+        font-weight: 600;
+      }
+      main {
+        padding: 18px;
+        max-width: 1100px;
+        margin: 20px auto;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+      }
+      .card {
+        background: var(--card);
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 3px 8px rgba(10, 25, 40, 0.06);
+      }
+      h1 {
+        margin: 0 0 8px 0;
+      }
+      .big {
+        font-size: 28px;
+        font-weight: 800;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .links a {
+        display: inline-block;
+        margin: 8px 8px 0 0;
+        padding: 8px 12px;
+        background: var(--sky);
+        color: #072034;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      footer {
+        background: linear-gradient(90deg, var(--blue), var(--sky));
+        color: white;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      @media (max-width: 520px) {
+        header {
+          padding: 14px;
+        }
+        .logo span {
+          font-size: 14px;
+        }
+      }
+    </style>
+    <!--PREMIER COMMIT-->
+    <h1 style="color: purple; text-align: center">
+      Bienvenue sur la version de Myriam!
+    </h1>
+  </head>
+  <body>
+    <header>
+      <div class="logo" aria-hidden="true">
+        <!-- logo image ajouté (gardé de ta version) -->
+        <img
+          src="images/WhatsApp Image 2025-10-25 à 13.48.42_89cadadd.jpg"
+          alt="Logo"
+          style="width: 48px; height: 48px; object-fit: contain"
+        />
+        <span>BTP-appGRP3</span>
+        <!-- J'ai gardé ton span, mais tu peux changer en BTP_appGRP3 si préféré -->
+      </div>
+      <nav>
+        <a href="stock_list.html">Stocks</a>
+        <!-- Corrigé : supprimé l'espace et le ; de Myriam -->
+        <a href="add_material.html">Ajouter</a>
+        <a href="services.html">Services</a>
+        <a href="contacts.html">Contacts</a>
+      </nav>
+    </header>
+    <main>
+      <div class="card">
+        <h1>Dashboard</h1>
+        <p class="muted">Vue synthétique de votre stock</p>
+        <div id="summary" class="grid" style="margin-top: 12px"></div>
+        <div style="margin-top: 16px" class="links">
+          <a href="stock_list.html">Voir les stocks</a>
+          <a href="add_material.html">Ajouter matériel</a>
+        </div>
+      </div>
 
+<<<<<<< HEAD
   
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -54,69 +192,87 @@
   </header>
   
 
+=======
+      <div style="height: 14px"></div>
 
-<main>
-  <div class="card">
-    <h1>Dashboard</h1>
-    <p class="muted">Vue synthétique de votre stock</p>
-    <div id="summary" class="grid" style="margin-top:12px"></div>
-    <div style="margin-top:16px" class="links">
-      <a href="stock_list.html">Voir les stocks</a>
-      <a href="add_material.html">Ajouter matériel</a>
-    </div>
-  </div>
+      <div class="card">
+        <h2 style="margin: 0 0 10px 0">Derniers matériels ajoutés</h2>
+        <div id="latest"></div>
+      </div>
+    </main>
+>>>>>>> origin/merge-branch
 
-  <div style="height:14px"></div>
+    <footer>
+      <h3 style="text-align: center">
+        BTP_appGRP3 — gestion de stock simple • Application responsive • Données
+        conservées dans votre navigateur
+      </h3>
+    </footer>
 
-  <div class="card">
-    <h2 style="margin:0 0 10px 0">Derniers matériels ajoutés</h2>
-    <div id="latest"></div>
-  </div>
-</main>
+    <script src="data.js"></script>
+    <script>
+      // Dashboard logic: calc totals and latest
+      const data = BTP_getData();
+      const summaryDiv = document.getElementById("summary");
+      const latestDiv = document.getElementById("latest");
 
-<footer>
-   <h3 style=" text-align:center;">BTP_appGRP3 — gestion de stock simple • Application responsive • Données conservées dans votre navigateur </h3>
-</footer>
+      function renderSummary() {
+        const totalItems = data.materials.length;
+        const totalQty = data.materials.reduce((s, m) => s + Number(m.qty), 0);
+        const totalValue = data.materials.reduce(
+          (s, m) => s + Number(m.qty) * Number(m.price || 0),
+          0
+        );
 
-<script src="data.js"></script>
-<script>
-  // Dashboard logic: calc totals and latest
-  const data = BTP_getData();
-  const summaryDiv = document.getElementById('summary');
-  const latestDiv = document.getElementById('latest');
+        const items = [
+          { title: "Nombre matériels", value: totalItems },
+          { title: "Quantité totale", value: totalQty },
+          {
+            title: "Valeur estimée (FCFA)",
+            value: totalValue.toLocaleString(),
+          },
+        ];
 
-  function renderSummary() {
-    const totalItems = data.materials.length;
-    const totalQty = data.materials.reduce((s,m) => s + Number(m.qty),0);
-    const totalValue = data.materials.reduce((s,m) => s + (Number(m.qty)*Number(m.price||0)),0);
-
-    const items = [
-      {title:'Nombre matériels', value: totalItems},
-      {title:'Quantité totale', value: totalQty},
-      {title:'Valeur estimée (FCFA)', value: totalValue.toLocaleString()}
-    ];
-
-    summaryDiv.innerHTML = items.map(it => `
+        summaryDiv.innerHTML = items
+          .map(
+            (it) => `
       <div class="card" style="padding:12px">
         <div class="muted">${it.title}</div>
         <div class="big">${it.value}</div>
       </div>
-    `).join('');
-  }
+    `
+          )
+          .join("");
+      }
 
-  function renderLatest() {
-    const latest = data.materials.slice(-4).reverse();
-    if(!latest.length) { latestDiv.innerHTML = '<p class="muted">Aucun matériel</p>'; return; }
-    latestDiv.innerHTML = latest.map(m => `
+      function renderLatest() {
+        const latest = data.materials.slice(-4).reverse();
+        if (!latest.length) {
+          latestDiv.innerHTML = '<p class="muted">Aucun matériel</p>';
+          return;
+        }
+        latestDiv.innerHTML = latest
+          .map(
+            (m) => `
       <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eef4fb">
         <div><strong>${m.name}</strong><div class="muted">${m.location} • ${m.qty} ${m.unit}</div></div>
         <div style="text-align:right"><a href="edit_material.html?id=${m.id}">Éditer</a><br/><a href="modify_stock.html?id=${m.id}">Modifier stock</a></div>
       </div>
-    `).join('');
-  }
+    `
+          )
+          .join("");
+      }
 
+<<<<<<< HEAD
   renderSummary();
   renderLatest();
 </script>
 </body>
 </html>
+=======
+      renderSummary();
+      renderLatest();
+    </script>
+  </body>
+</html>
+>>>>>>> origin/merge-branch
