@@ -8,15 +8,32 @@
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Services — BTP_appGRP3</title>
 <style>
-  body{font-family:Inter, Arial;margin:0;background:#f7fbff;color:#042033}
-  header{background:linear-gradient(90deg,#1E3A8A,#7fc7ff);color:white;padding:12px 14px;display:flex;align-items:center}
-  main{max-width:1000px;margin:18px auto;padding:12px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-  .card{background:white;padding:14px;border-radius:12px;box-shadow:0 3px 10px rgba(2,8,20,0.06);transition:transform 0.2s}
-  .card:hover{transform:translateY(-2px)}
-  h2{margin:0 0 8px 0}
-  .muted{color:#6b7280}
-  footer{text-align:center;padding:10px;background:#f3f4f6;color:#666;font-size:0.875em;margin-top:20px}
+
+  /* Style simple, couleurs: bleu, bleu-ciel, blanc */
+  :root{
+    --blue: #1E3A8A;
+    --sky:#7fc7ff;
+    --bg:#f7fbff;
+    --card:#ffffff;
+    --muted:#6b7280;
+  }
+  *{box-sizing:border-box}
+  body{font-family:Inter, system-ui, Arial; margin:0; background:var(--bg); color:#0b1723}
+  header{background:linear-gradient(90deg,var(--blue),var(--sky)); color:white; padding:18px 20px; display:flex; align-items:center; gap:14px}
+  .logo{display:flex; align-items:center; gap:10px; font-weight:700}
+  .logo svg{width:48px;height:48px}
+  nav{margin-left:auto}
+  nav a{color:white;text-decoration:none;margin-left:14px;font-weight:600}
+  main{padding:18px;max-width:1100px;margin:20px auto}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 3px 8px rgba(10,25,40,0.06)}
+  h1{margin:0 0 8px 0}
+  .big{font-size:28px;font-weight:800}
+  .muted{color:var(--muted);font-size:14px}
+  .links a{display:inline-block;margin:8px 8px 0 0;padding:8px 12px;background:var(--sky);color:#072034;border-radius:8px;text-decoration:none;font-weight:600}
+  footer{max-width:1100px;margin:20px auto;color:var(--muted);font-size:13px;text-align:center}
+  @media (max-width:520px){header{padding:14px} .logo span{font-size:14px}}
+
 </style>
 </head>
 <body>
@@ -27,6 +44,45 @@
 
 <main>
   <div class="grid" id="servicesGrid"></div>
+
+  <!-- Texte de présentation ajouté sans modifier le code existant -->
+  <section class="card" style="margin-top:20px;">
+    <h1 class="big">Présentation de nos Services – BTP_appGRP3</h1>
+
+    <p>BTP_appGRP3 est une plateforme numérique innovante dédiée à la promotion, à la structuration et à la croissance durable des sociétés opérant dans le secteur du bâtiment et des travaux publics.</p>
+
+    <p>Notre application se veut être un instrument de modernisation et d’efficacité, favorisant la digitalisation des processus internes et externes des entreprises partenaires.</p>
+
+    <p>Elle offre un environnement interactif où la rigueur professionnelle se conjugue avec la simplicité d’utilisation.</p>
+
+    <p>À travers BTP_appGRP3, nous mettons à la disposition des entreprises un ensemble d’outils de gestion adaptés aux réalités du terrain.</p>
+
+    <p>L’application permet un suivi précis des stocks, une administration fluide des matériaux, et une traçabilité exemplaire de chaque opération.</p>
+
+    <p>Notre objectif premier est d’accompagner les acteurs du BTP dans la maîtrise de leurs ressources, l’optimisation de leurs coûts et la consolidation de leur rentabilité.</p>
+
+    <p>Nous croyons fermement que le développement économique des sociétés passe par la qualité de leur organisation et la pertinence de leurs choix technologiques.</p>
+
+    <p>C’est pourquoi BTP_appGRP3 se distingue par son approche intuitive, son architecture sécurisée et sa compatibilité avec les standards de gestion modernes.</p>
+
+    <p>Notre équipe œuvre chaque jour à perfectionner cette solution afin qu’elle demeure un levier essentiel du progrès entrepreneurial.</p>
+
+    <p>Par ailleurs, notre service d’assistance et de formation garantit un accompagnement personnalisé à chaque entreprise adhérente.</p>
+
+    <p>Nous veillons à ce que chaque utilisateur maîtrise pleinement les fonctionnalités offertes et puisse exploiter tout le potentiel de la plateforme.</p>
+
+    <p>Cette démarche s’inscrit dans une volonté d’excellence et de partenariat durable.</p>
+
+    <p>BTP_appGRP3 n’est pas seulement une application : c’est un catalyseur de croissance, un trait d’union entre la tradition du savoir-faire artisanal et l’avenir numérique du BTP.</p>
+
+    <p>En valorisant les compétences humaines et en optimisant les outils technologiques, elle participe activement au développement structurel et économique des entreprises.</p>
+
+    <p>Ainsi, notre mission s’enracine dans une vision claire : faire du digital un moteur de prospérité et d’innovation dans le monde de la construction.</p>
+
+    <p>BTP_appGRP3 s’impose donc comme un partenaire stratégique, fiable et évolutif, au service du progrès collectif et de la réussite de chaque société.</p>
+  </section>
+  <!-- Fin du texte ajouté -->
+
 </main>
 
 <footer>
