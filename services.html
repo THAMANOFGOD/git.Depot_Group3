@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <!-- Version 1.1 - Yves ANAGUE - Améliorations globales -->
 <html lang="fr">
@@ -8,13 +9,14 @@
 <title>Services — BTP_appGRP3</title>
 <style>
   body{font-family:Inter, Arial;margin:0;background:#f7fbff;color:#042033}
-  header{background:linear-gradient(90deg,#0a66c2,#7fc7ff);color:white;padding:12px 14px;display:flex;align-items:center}
+  header{background:linear-gradient(90deg,#1E3A8A,#7fc7ff);color:white;padding:12px 14px;display:flex;align-items:center}
   main{max-width:1000px;margin:18px auto;padding:12px}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
   .card{background:white;padding:14px;border-radius:12px;box-shadow:0 3px 10px rgba(2,8,20,0.06);transition:transform 0.2s}
   .card:hover{transform:translateY(-2px)}
   h2{margin:0 0 8px 0}
   .muted{color:#6b7280}
+  footer{text-align:center;padding:10px;background:#f3f4f6;color:#666;font-size:0.875em;margin-top:20px}
 </style>
 </head>
 <body>
@@ -27,6 +29,10 @@
   <div class="grid" id="servicesGrid"></div>
 </main>
 
+<footer>
+  Modified by Andriel on October 24, 2025
+</footer>
+
 <script src="data.js"></script>
 <script>
   const data = BTP_getData();
@@ -38,5 +44,10 @@
     </div>
   `).join('');
 </script>
+<section>
+  <h3 style="color: purple; text-align: center;">De nouveaux services arrivent bientôt !</h3>
+</section>
+
 </body>
 </html>
+```
