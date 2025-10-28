@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <!-- Version 1.1 - Yves ANAGUE - Améliorations globales -->
 <html lang="fr">
@@ -7,20 +8,49 @@
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Services — BTP_appGRP3</title>
 <style>
-  body{font-family:Inter, Arial;margin:0;background:#f7fbff;color:#042033}
-  header{background:linear-gradient(90deg,#1E3A8A,#7fc7ff);color:white;padding:12px 14px;display:flex;align-items:center}
-  main{max-width:1000px;margin:18px auto;padding:12px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-  .card{background:white;padding:14px;border-radius:12px;box-shadow:0 3px 10px rgba(2,8,20,0.06);transition:transform 0.2s}
-  .card:hover{transform:translateY(-2px)}
-  h2{margin:0 0 8px 0}
-  .muted{color:#6b7280}
+
+  /* Style simple, couleurs: bleu, bleu-ciel, blanc */
+  :root{
+    --blue: #1E3A8A;
+    --sky:#7fc7ff;
+    --bg:#f7fbff;
+    --card:#ffffff;
+    --muted:#6b7280;
+  }
+  *{box-sizing:border-box}
+  body{font-family:Inter, system-ui, Arial; margin:0; background:var(--bg); color:#0b1723}
+  header{background:linear-gradient(90deg,var(--blue),var(--sky)); color:white; padding:18px 20px; display:flex; align-items:center; gap:14px}
+  .logo{display:flex; align-items:center; gap:10px; font-weight:700}
+  .logo svg{width:48px;height:48px}
+  nav{margin-left:auto}
+  nav a{color:white;text-decoration:none;margin-left:14px;font-weight:600}
+  main{padding:18px;max-width:1100px;margin:20px auto}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 3px 8px rgba(10,25,40,0.06)}
+  h1{margin:0 0 8px 0}
+  .big{font-size:28px;font-weight:800}
+  .muted{color:var(--muted);font-size:14px}
+  .links a{display:inline-block;margin:8px 8px 0 0;padding:8px 12px;background:var(--sky);color:#072034;border-radius:8px;text-decoration:none;font-weight:600}
+  footer{max-width:1100px;margin:20px auto;color:var(--muted);font-size:13px;text-align:center}
+  @media (max-width:520px){header{padding:14px} .logo span{font-size:14px}}
+
 </style>
 </head>
 <body>
 <header>
   <div style="font-weight:700">Nos services</div>
-  <a style="margin-left:auto;color:white;text-decoration:none" href="index.html">Accueil</a>
+<header style="display: flex; align-items: center; background-color: #1E3A8A; padding: 10px; font-family: 'Poppins', sans-serif;">
+
+  
+  <nav style="display: flex; gap: 20px;">
+        <a href="index.html" style="color: white; text-decoration: none;">Accueil</a>
+    <a href="stock_list.html" style="color: white; text-decoration: none;">Stocks</a>
+    <a href="add_material.html" style="color: white; text-decoration: none;">Ajouter</a>
+    <a href="services.html" style="color: white; text-decoration: none;">Services</a>
+    <a href="contacts.html" style="color: white; text-decoration: none;">Contacts</a>
+
+  </nav>
+</header>
 </header>
 
 <main>
@@ -66,6 +96,10 @@
 
 </main>
 
+<footer>
+  Modified by Andriel on October 24, 2025
+</footer>
+
 <script src="data.js"></script>
 <script>
   const data = BTP_getData();
@@ -83,3 +117,4 @@
 
 </body>
 </html>
+```

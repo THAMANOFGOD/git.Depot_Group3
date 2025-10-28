@@ -8,18 +8,19 @@
 <title>Contacts — BTP_appGRP3</title>
 
 <!-- DEUXIEME COMMIT-->
-<p style="color: purple; text-align: center;">Page mise à jour le 25 octobre 2025</p>
+<p style="color: rgb(26, 29, 246); text-align: center;">Page mise à jour le 25 octobre 2025</p>
 
 <style>
   body{font-family:Inter, Arial;margin:0;background:p;color:#042033}
-  header{background: purple;color:white;padding:12px 14px;display:flex;align-items:center}
+  header{background: rgb(15, 0, 128);color:white;padding:12px 14px;display:flex;align-items:center}
   main{max-width:900px;margin:18px auto;padding:12px}
   .grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
   .card{background:white;padding:14px;border-radius:10px;box-shadow:0 3px 10px rgba(2,8,20,0.06)}
-  .contact{padding:8px 0;border-bottom:1px solid purple}
+  .contact{padding:8px 0;border-bottom:1px solid rgb(49, 9, 181)}
   label{display:block;margin-top:8px}
-  input,textarea{width:100%;padding:8px;border-radius:8px;border:1px solid purple}
-  button{margin-top:10px;padding:10px;border-radius:8px;border:none;background: purple;color:white;font-weight:700}
+  input,textarea{width:100%;padding:8px;border-radius:8px;border:1px solid #e6f2ff}
+  button{margin-top:10px;padding:10px;border-radius:8px;border:none;background:#0a66c2;color:white;font-weight:700}
+  footer{text-align:center;padding:10px;background:#f3f4f6;color:#666;font-size:0.875em;margin-top:20px}
 </style>
 </head>
 <!-- Mon premier changement -->
@@ -29,7 +30,7 @@
 <header>
   <div style="font-weight:700">Contacts</div>
   <a style="margin-left:auto;color:white;text-decoration:none" href="index.html">Accueil</a>
->>>>>>> origin/yves-anague
+
 </header>
 
 
@@ -44,7 +45,9 @@
       <h3>Envoyer un message (local)</h3>
       <form id="contactForm" onsubmit="return false">
         <label>Nom<input id="c_name" required /></label>
+        <label>Rôle<input id="c_role" placeholder="ex: Fournisseur" /></label>
         <label>Email<input id="c_email" type="email" required /></label>
+        <label>Téléphone<input id="c_phone" placeholder="ex: +237 6xx xxx xxx" /></label>
         <label>Message<textarea id="c_msg" rows="5" required></textarea></label>
         <button id="sendBtn">Envoyer</button>
         <div id="c_ack" style="margin-top:8px;color:green"></div>
@@ -53,25 +56,44 @@
   </div>
 </main>
 
+<footer>
+  Modified by Andriel on October 24, 2025
+</footer>
+
 <script src="data.js"></script>
 <script>
-  const data = BTP_getData();
-  const list = document.getElementById('contactsList');
-  list.innerHTML = data.contacts.map(c => `
-    <div class="contact">
-      <strong>${c.name}</strong> <div style="color:#6b7280">${c.role}</div>
-      <div style="margin-top:6px">📞 ${c.phone} • ✉️ ${c.email}</div>
-    </div>
-  `).join('');
+  // Function to refresh the contacts list
+  function refreshContacts() {
+    const data = BTP_getData();
+    const list = document.getElementById('contactsList');
+    list.innerHTML = data.contacts.map(c => `
+      <div class="contact">
+        <strong>${c.name}</strong> <div style="color:#6b7280">${c.role || 'Non spécifié'}</div>
+        <div style="margin-top:6px">📞 ${c.phone || 'N/A'} • ✉️ ${c.email}</div>
+      </div>
+    `).join('');
+  }
+
+  // Initial load
+  refreshContacts();
 
   document.getElementById('sendBtn').addEventListener('click', ()=>{
     const name = document.getElementById('c_name').value.trim();
+    const role = document.getElementById('c_role').value.trim();
     const email = document.getElementById('c_email').value.trim();
+    const phone = document.getElementById('c_phone').value.trim();
     const message = document.getElementById('c_msg').value.trim();
-    if(!name||!email||!message) { alert('Remplis tous les champs'); return; }
-    // Local acknowledgement only (pas d'envoi serveur)
-    document.getElementById('c_ack').textContent = 'Message enregistré localement (simulé). Merci ' + name + '.';
+    if(!name||!email||!message) { alert('Remplis tous les champs obligatoires'); return; }
+    // Save new contact to local data
+    const data = BTP_getData();
+    const newContact = { name, role: role || 'Non spécifié', email, phone: phone || 'N/A' };
+    data.contacts.push(newContact);
+    BTP_saveData(data);
+    // Local acknowledgement
+    document.getElementById('c_ack').textContent = 'Contact ajouté et message enregistré localement. Merci ' + name + '.';
     document.getElementById('contactForm').reset();
+    // Refresh list to show new contact
+    refreshContacts();
   });
 </script>
 </body>
